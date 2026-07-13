@@ -24,6 +24,11 @@ from chart_system.configuration import (
     NATIVE_CONFIGURATION,
     get_configuration,
 )
+from chart_system.divergence import (
+    DivergenceAnalyzer,
+    DivergenceType,
+    DivergenceRecord,
+)
 
 __version__ = "0.1.0"
 
