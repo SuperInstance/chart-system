@@ -1,0 +1,136 @@
+# Chart System
+
+> Four charts. One ocean. The overlap is consensus. The divergence is discovery. The negative space is where the future is.
+
+Polyformal navigation for Working Animal Architecture. The Chart System runs multiple chart configurations over the same problem space simultaneously, cross-references their outputs, and treats their **interchart differential** — the productive disagreement between perspectives — as the primary epistemic signal.
+
+## Why
+
+The Conservation Law of Intelligence (γ + H = C) guarantees that any single model configuration faces an unavoidable tradeoff: every unit of resolution allocated to ecological detail is a unit taken from systemic flow analysis. **No single chart can see the whole ocean.** Instead of building a bigger chart, the Chart System runs four charts whose coverage overlaps and complements, extracting more total signal than any single configuration could.
+
+## The Four Charts
+
+### 🐟 Chart-Fisherman — Ecological Detail
+
+**Sees:** Bottom structure, local ecology, temporal patterns, seasonal cycles. Where the fish are, why they're there, when they'll move.
+**Misses:** The trade route overhead. The systemic current that determines whether fishing happens at all.
+**Attention bias:** Specificity and locality. High sensor resolution, short horizon, low abstraction.
+
+### ⛵ Chart-Sailor — Systemic Flows
+
+**Sees:** The ocean as a transportation network. Currents, prevailing winds, hazard bearings, safe passages. The systemic patterns governing all movement.
+**Misses:** The fish under the hull. The story behind the landmark.
+**Attention bias:** Connectivity and flow. Coarse sensors, long horizon, high abstraction depth.
+
+### 📸 Chart-Tourist — Surface Features
+
+**Sees:** The ocean as an experience. Landmarks, narratives, scenic routes. The surface the other charts treat as transparent.
+**Misses:** Everything below the surface — both ecology and navigational structure.
+**Attention bias:** Salience and novelty. Narrative construction, human-readable output.
+
+### 🌑 Chart-Native — Negative Space
+
+**Sees:** What the other three charts *don't* see. Absence patterns, missing signals, expected events that didn't happen. The shape of what isn't there.
+**Misses:** Nothing of its own — it deliberately charts what the others miss. Its blind spots are their specialty.
+**Attention bias:** Anomaly-as-absence and meta-patterns. Consumes the negative observations of all other charts.
+
+## Architecture
+
+```
+                    ┌─────────────────────────────────────────┐
+                    │          CHART REFERENCER               │
+                    │   Consensus map + Divergence map +      │
+                    │   Discovery signal                      │
+                    └─────────┬──────────┬─────────┬──────────┘
+                              │          │         │
+              ┌───────────────┼──────────┼─────────┼──────────┐
+              │               │          │         │          │
+    ┌─────────▼──────┐ ┌─────▼──────┐ ┌──▼──────┐ ┌▼─────────┐
+    │  CHART-FISHMAN │ │CHART-SAILOR│ │CHART-   │ │CHART-    │
+    │  Ecological    │ │ Systemic   │ │TOURIST  │ │NATIVE    │
+    │  Local detail  │ │ Global flow│ │ Surface │ │ Negative │
+    └────────┬───────┘ └─────┬──────┘ └──┬──────┘ └┬─────────┘
+             └────────────────┴───────────┴─────────┘
+                              │
+                    ┌─────────▼──────────┐
+                    │   SHARED DATA      │
+                    │   Same ocean.      │
+                    └────────────────────┘
+```
+
+The Chart Referencer produces three outputs:
+
+1. **Consensus Map** — where all charts agree → high-confidence knowledge
+2. **Divergence Map** — where charts disagree → classified as constructive, contradictory, or complementary
+3. **Discovery Signal** — when Chart-Native flags an absence pattern unexplained by the others → the system's most valuable output
+
+## Installation
+
+```bash
+pip install chart-system
+```
+
+## Usage
+
+```python
+from chart_system import (
+    ChartFisherman, ChartSailor, ChartTourist, ChartNative,
+    ChartReferencer, DivergenceAnalyzer,
+)
+
+# Define your problem space as observations
+observations = [
+    {"location": "bay-7", "signal": "abundance", "value": 0.85, "confidence": 0.9},
+    {"location": "bay-7", "signal": "passage_safety", "value": 0.3, "confidence": 0.7},
+    {"location": "bay-7", "signal": "scenic_value", "value": 0.6, "confidence": 0.5},
+]
+
+# Each chart reads the same data differently
+fisherman = ChartFisherman()
+sailor = ChartSailor()
+tourist = ChartTourist()
+native = ChartNative()
+
+fisherman_chart = fisherman.plot(observations)
+sailor_chart = sailor.plot(observations)
+tourist_chart = tourist.plot(observations)
+native_chart = native.plot(observations)
+
+# Cross-reference all charts
+referencer = ChartReferencer()
+result = referencer.run([fisherman_chart, sailor_chart, tourist_chart, native_chart])
+
+print(result.consensus)   # → verified presence regions
+print(result.divergence)  # → classified disagreements
+print(result.discovery)   # → unexplained absence patterns
+```
+
+## Interchart Protocol
+
+Each chart broadcasts two streams:
+
+- **Positive observations** — what it sees, with confidence
+- **Negative observations** — what it expected but didn't find
+
+Chart-Native primarily consumes stream 2 from all other charts, plus its own positive observations. This is the mechanism for charting negative space.
+
+## Conservation Law Analysis
+
+| Chart | γ Focus | H Dominates When... |
+|-------|---------|---------------------|
+| Fisherman | Local ecological patterns | Asked about global flows |
+| Sailor | Systemic flow patterns | Asked about local detail |
+| Tourist | Salient surface features | Asked about underlying mechanism |
+| Native | Absence and meta-patterns | Asked about direct presence |
+
+The system's total budget is 4C (four charts), but effective coverage exceeds 4C because each chart's H region is covered by another chart's γ region.
+
+## Origin
+
+Inspired by Casey's insight that languages are navigation charts drawn for specific agendas. A fisherman's chart, a sailor's chart, a tourist's chart, and a Tlingit chart of the same waters look fundamentally different — and they are all correct, all incomplete, in different directions.
+
+**Lineage:** Casey's chart insight → polyformalism convergence → conservation law (γ + H = C) → Working Animal Architecture
+
+## License
+
+MIT
